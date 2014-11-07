@@ -2,6 +2,7 @@ import java.io.*;
 
 class Begin extends Special {
  
+    //This is a test
     // TODO: Add any fields needed.
 
  
