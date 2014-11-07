@@ -6,7 +6,7 @@ class Cond extends Special {
 
  
     // TODO: Add an appropriate constructor.
-	public Cond(Node t){
+	public Cond(Node t) {
 
 	}
     void print(Node t, int n, boolean p) { 
