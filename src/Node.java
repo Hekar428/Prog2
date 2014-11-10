@@ -5,8 +5,6 @@ class Node {
   // Every subclass of Node must implement print(int).
   public void print(int n) {}
 
-  public boolean isProcedure()  { return false; }
-
   // The first argument of print(int, boolean) is the number of characters
   // to indent.  It is interpreted the same as for print(int).
   // The second argument is only useful for lists (nodes of classes
@@ -37,6 +35,7 @@ class Node {
   public boolean isSymbol() { return false; }  // Ident  // done
   public boolean isNull()   { return false; }  // nil  // done
   public boolean isPair()   { return false; }  // Cons // done
+  public boolean isProcedure()  { return false; }
 
   // TODO: Report an error in these default methods and implement them
   // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
