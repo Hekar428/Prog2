@@ -5,6 +5,8 @@ class Node {
   // Every subclass of Node must implement print(int).
   public void print(int n) {}
 
+  public boolean isProcedure()  { return false; }
+
   // The first argument of print(int, boolean) is the number of characters
   // to indent.  It is interpreted the same as for print(int).
   // The second argument is only useful for lists (nodes of classes
