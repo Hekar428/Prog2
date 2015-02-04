@@ -13,7 +13,8 @@ class Closure extends Node {
     private Node fun;		// a lambda expression
     private Environment env;	// the environment in which the function
 				// was defined
-
+    
+    
     public Closure(Node f, Environment e)	{ fun = f;  env = e; }
 
     public Node getFun()		{ return fun; }
@@ -38,6 +39,23 @@ class Closure extends Node {
     // to report an error.  It should be overwritten only in classes
     // BuiltIn and Closure.
     public Node apply (Node args) {
-	   return null;
+        Environment env = this.getEnv();
+        Node fun = this.getFun();
+
+        
+        Node par = fun.getCar();
+        
+
+        while (args != null && !args.getCar().isNull()) {
+            env.define(par.getCar(), args.getCar());
+            par = par.getCdr();
+            args = args.getCdr();
+        }
+
+	   return fun.getCdr().getCar().eval(env);
+    }
+
+    public Node eval(Node node, Environment env) {
+        return this;
     }
 }

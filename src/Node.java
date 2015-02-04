@@ -35,7 +35,6 @@ class Node {
   public boolean isSymbol() { return false; }  // Ident  // done
   public boolean isNull()   { return false; }  // nil  // done
   public boolean isPair()   { return false; }  // Cons // done
-  public boolean isProcedure()  { return false; }
 
   // TODO: Report an error in these default methods and implement them
   // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
@@ -53,4 +52,29 @@ class Node {
   public void setCdr(Node d) {}
   
   public String getName() { return ""; }
+  
+  public Node eval(Environment env){
+      return this;
+  }
+  
+  public Node apply(Node ar){
+      System.out.println("Can not call apply from Node");
+      return this;
+  }
+  
+  public int getValue(){
+      return 0;
+  }
+  
+  public boolean getBoolean(){
+      return false;
+  }
+  
+  public boolean isProcedure(){
+      return false;
+  }
+  
+  public String getStrVal(){
+      return "";
+  }
 }

@@ -13,6 +13,11 @@ class Quote extends Special {
     	Printer.printQuote(t, n, p);
     }
 
+    @Override
+    public Node eval(Node node, Environment env) {
+    	return node.getCdr().getCar();
+    }
+
 }
     
 

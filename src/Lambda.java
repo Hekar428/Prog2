@@ -11,4 +11,9 @@ class Lambda extends Special {
     	  Printer.printLambda(t, n, p);
   	}
 
+  	@Override
+  	public Node eval(Node node, Environment env) {
+  		return new Closure(node, env);
+  	}
+
 }

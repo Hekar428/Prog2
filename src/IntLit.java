@@ -10,4 +10,12 @@ class IntLit extends Node {
 
   public boolean isNumber() { return true; }
 
+  public int getValue() {
+  	return intVal;
+  }
+
+  public Node eval(Node node, Environment env) {
+  	return this;
+  }
+
 }

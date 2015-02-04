@@ -4,7 +4,7 @@ class BooleanLit extends Node {
   private static BooleanLit True=null;
   private static BooleanLit False=null;
   
-  private BooleanLit(boolean b) {
+  public BooleanLit(boolean b) {
     booleanVal = b;
   }
   
@@ -29,7 +29,14 @@ class BooleanLit extends Node {
    		Printer.printBoolLit(n, 0);
   }
   
+  public boolean getBoolean() {
+    return booleanVal;
+  }
 
   public boolean isBoolean()   { return true; }
+
+  public Node eval(Node node, Environment env) {
+    return this;
+  }
 
 }

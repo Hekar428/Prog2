@@ -11,6 +11,22 @@ class Set extends Special {
 	}
 	
     void print(Node t, int n, boolean p) {
-    	Printer.printSet(t, n, p);
+        Printer.printSet(t, n, p);
+    }
+    
+    public Node eval(Node t, Environment env) {
+    	
+        
+        Node ev = t.getCdr().getCdr().getCar().eval(env);
+        
+        if(!(env.lookup(t.getCdr().getCar()).isNull())){
+            env.assign(t.getCdr().getCar(), ev);
+            return new StrLit("#{Unspecific}");
+        }
+        else {
+            return new StrLit("Error in Set Class");
+        }
+               
+                
     }
 }

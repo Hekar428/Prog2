@@ -86,36 +86,24 @@ class Environment extends Node {
     }
 
     public void define (Node id, Node val) {
-	// TODO: implement this function
-    	Node value = find(id, scope);
-
-    	if (value == null)
-    	{
-    		scope = new Cons(new Cons(id, new Cons(val, new Nil())), scope);
-    	}
-    	else {
-    		value.setCar(val);
-    	}
+    Node value = find(id, scope);
+        if(value == null)
+            scope = new Cons(new Cons(id, new Cons(val, new Nil())), scope);
+        else
+            value.setCar(val);
     }
 
     public void assign (Node id, Node val) {
-	// TODO: implement this function
+    Node value = find(id, scope);
+        if (value == null && env == null)
+            System.out.println("Illegal Variable");
+        else if(value == null)
+            assign(id, env);
+        else
+            setCar(new Cons(id, val));
+    }
 
-	// You can use find() to get a list containing the value and
-	// then update the value using setCar()
-    	Node value = find(id, scope);
-    	if (value == null && env == null)
-    	{
-    		//Name not found.
-    		System.out.println("Undefined variable");
-    	}
-    	else if (value == null) {
-    		//look for value in scope
-    		assign(id, env);
-    	}
-    	else {
-    		//get the value returned from find()
-    		setCar(new Cons(id, val));
-    	}
+    public Node eval(Node node, Environment env) {
+        return this;
     }
 }

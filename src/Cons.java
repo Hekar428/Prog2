@@ -60,5 +60,9 @@ class Cons extends Node {
     
     public Node getCar(){return car;}
     public Node getCdr(){return cdr;}
+    
+    public Node eval(Environment env){
+        return this;
+    }
 
 }

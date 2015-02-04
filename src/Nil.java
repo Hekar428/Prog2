@@ -20,6 +20,11 @@ class Nil extends Node {
   }
   
   public boolean isNull()   { return true; }
+
+  public Node eval(Node node, Environment env) {
+    System.out.println("Nil!");
+    return null;
+  }
   
   
 }

@@ -53,14 +53,73 @@ public class Main {
 	Parser parser = new Parser(scanner);
 	Node root;
 	
-	// Parse and pretty-print each input expression
-	
-	root = parser.parseExp();
-	while (root != null) {
-	    root.print(0);
-	    root = parser.parseExp();
-	}
-	System.exit(0);
+	Environment env = new Environment();
+	Ident id;
+
+	id = new Ident("set-car!");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("set-cdr!");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("null?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("pair?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("eq?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("procedure?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("read");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("write");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("display");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("newline");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("eval");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("apply");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("interaction-environment");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b+");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("car");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("symbol?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("number?");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b/");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b-");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b*");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b=");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("b<");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("cdr");
+    env.define(id, new BuiltIn(id));
+    id = new Ident("cons");
+    env.define(id, new BuiltIn(id));
+
+    Environment env_new = new Environment(env);
+    BuiltIn foo = new BuiltIn(env_new);
+
+    System.out.print("SchemeCB> ");
+    root = parser.parseExp();
+    while (root != null) {
+        try {
+    	foo.apply(root).eval(env_new).print(0);
+    	System.out.print("> ");
+        }
+        catch (NullPointerException e) {
+            System.out.print("> ");
+        }
+    	root = parser.parseExp();
     }
-    	
+    System.exit(0);
+    }
 }

@@ -12,5 +12,11 @@ class StrLit extends Node {
   public boolean isString() { return true; };
 
   
-  public String getStrVal(){return strVal;}
+  public String getStrVal() {
+    return strVal; 
+  }
+
+  public Node eval(Node node, Environment env) {
+  	return this;
+  }
 }
